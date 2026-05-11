@@ -1,373 +1,287 @@
-Quick Commerce Performance & Customer Insights Analytics
+# Quick Commerce Performance & Customer Insights Analytics
 
-Project Overview
+## Project Overview
 
-This project simulates a real-world quick-commerce analytics pipeline, beginning from synthetic data generation and extending through advanced SQL modeling to an interactive Power BI dashboard.
+This project simulates a real-world quick commerce analytics ecosystem, covering the complete analytics lifecycle — from synthetic data generation and preprocessing to advanced SQL analytics and interactive Power BI dashboard reporting. 
 
-The objective was to design a complete end-to-end analytics workflow that fulfills structured academic and business reporting criteria using:
+The primary objective of this project was to design an end-to-end business analytics pipeline capable of transforming large-scale transactional data into actionable business insights using industry-standard tools and workflows.
 
-Python for data generation and preprocessing
+### Tech Stack
 
-Excel for initial validation and inspection
+* **Python** — Data generation, preprocessing, and transformation
+* **Excel** — Initial validation and inspection
+* **MySQL** — Relational database modeling and advanced SQL analytics
+* **Power BI** — Interactive dashboarding and business intelligence reporting
+* **Git & Git LFS** — Version control and project management
 
-MySQL for relational modeling and advanced SQL analytics
+---
 
-Power BI for multi-page interactive business dashboard reporting
+# Project Objectives
 
-This project replicates how organizations transform raw transactional data into structured business insights.
+The project was designed to replicate enterprise-level analytics reporting and fulfill structured business intelligence requirements.
 
-Project Objectives
+## Dashboard Requirements
 
-The project was designed to satisfy the following requirements.
+* Multiple related tables
+* Full timestamp-based tracking using date-time columns
+* Multi-page interlinked dashboard architecture
+* 20+ business KPIs with percentage-based trend metrics
+* Drill-through navigation and interactive filtering
 
-Power BI Report Requirements
+## SQL Requirements
 
-Multiple related tables
+* KPI query implementation
+* Chart-level analytical queries
+* Advanced SQL concepts including:
 
-Date-time columns with full timestamp tracking
+  * CTEs
+  * Window Functions
+  * Subqueries
+  * Joins
+  * Ranking Functions
+  * Rolling Calculations
+  * Cohort Analysis
 
-Multi-page interlinked dashboard (more than 3 pages)
+## Documentation Requirements
 
-20+ KPIs including percentage change metrics
+* Project overview
+* Data ingestion workflow
+* Data cleaning and preprocessing steps
+* SQL query documentation
+* Dashboard screenshots
+* Business insights and recommendations
+* Future enhancement roadmap
 
-PPT Documentation Requirements
+---
 
-Title
+# End-to-End Workflow
 
-Acknowledgement
+## 1. Data Generation (Python)
 
-Objective and Motivation
+Synthetic datasets were generated using Python to simulate a scalable quick commerce environment.
 
-Data Ingestion Steps
+### Generated Data Includes
 
-Data Cleaning and Preprocessing
+* 150,000 customers
+* 900,000+ orders
+* 900,000+ transactions
+* Product catalog with perishable classification
+* Order lifecycle tracking
+* Structured date dimension table
 
-Data Analysis and Business Insights
+### Key Features
 
-SQL Query Snapshots
+* Realistic timestamp simulation
+* City-level order distribution
+* Delivery ETA calculations
+* Payment lifecycle tracking
+* Order cancellation handling
 
-Dashboard Screenshots
+---
 
-Key Insights
+## 2. Initial Data Validation (Excel)
 
-Future Work
+Before database ingestion:
 
-Resources
+* CSV structures were verified
+* Date formats validated
+* Null values inspected
+* Boolean fields standardized
+* Duplicate records checked
 
-SQL Requirements
+This ensured schema consistency before SQL import.
 
-Queries for all KPIs
+---
 
-Queries for all major charts
+## 3. Data Cleaning & Transformation (Python)
 
-Advanced SQL techniques including CTEs, Window Functions, Subqueries, Joins, Ranking, Rolling Calculations, and Cohort Analysis
+Using **Pandas**, the following preprocessing tasks were performed:
 
-End-to-End Workflow
+* Standardized city names
+* Corrected inconsistent data types
+* Handled null values
+* Verified timestamp formatting
+* Standardized boolean conversions
 
-Step 1 – Data Generation (Python)
+The cleaned datasets were then exported for database ingestion.
 
-Synthetic data was generated using Python scripts to simulate:
+---
 
-150,000 customers
+## 4. Database Modeling (MySQL)
 
-900,000+ orders
+A structured relational schema was designed with the following tables:
 
-900,000+ transactions
+* `customers`
+* `orders`
+* `products`
+* `transactions`
+* `order_status_logs`
+* `date_dim`
 
-Product catalog with perishable tagging
+## Analytical Views Created
 
-Order lifecycle tracking from placed to delivered or cancelled
+* `vw_order_fact`
+* `vw_order_lifecycle`
+* `vw_payments_fact`
 
-A structured date dimension table
+## Database Optimization
 
-The dataset includes detailed timestamp columns such as order timestamps, payment timestamps, delivery timestamps, ETA values, and city-level distribution to simulate realistic quick-commerce operations.
+Indexes were implemented for:
 
-Step 2 – Initial Data Validation (Excel)
+* Order timestamps
+* Customer joins
+* Product joins
+* Payment joins
 
-Before importing into SQL:
+This replicates real-world analytical database optimization practices.
 
-CSV files were reviewed in Excel
+---
 
-Column structures validated
+# Advanced SQL Analytics
 
-Date formats verified
+The project implements **25+ business KPIs** across multiple business domains.
 
-Null values inspected
+## Revenue Analytics
 
-Boolean values standardized
+* Total Revenue
+* Revenue Month-over-Month %
+* Revenue per Customer
+* Revenue Share % for Top Products
+* Pareto 80/20 Product Analysis
 
-Duplicate records checked
+## Customer Analytics
 
-This ensured clean schema alignment before database ingestion.
+* Total Customers
+* Repeat Customer %
+* Orders per Customer
+* Customer Lifetime Value (CLV)
+* Cohort Retention Analysis
 
-Step 3 – Data Cleaning and Transformation (Python)
+## Delivery Analytics
 
-Using Pandas:
+* On-Time Delivery %
+* Delayed Orders %
+* SLA Breach %
+* Average Delivery Time
+* 90th Percentile Delivery Time
 
-City names were standardized
+## Product Analytics
 
-Boolean conversions handled
+* Top 10 Products by Revenue
+* Perishable Revenue %
+* Top Products Per City using Window Ranking
 
-Null values identified and treated
+## Payment Analytics
 
-Data types corrected
+* Total Transactions
+* Payment Success Rate %
+* Failed Payment %
+* Rolling 7-Day Payment Failure %
+* Payment Mode Distribution
 
-Timestamp formatting verified
+---
 
-Cleaned data exported for SQL import
+# Advanced SQL Concepts Used
 
-This stage ensured data integrity before loading into MySQL.
+* Common Table Expressions (CTEs)
+* Window Functions
 
-Step 4 – Database Modeling (MySQL)
+  * `RANK()`
+  * `ROW_NUMBER()`
+  * `SUM() OVER()`
+  * `LAG()`
+* Rolling Averages
+* Conditional Aggregation
+* Cohort Analysis
+* Timestamp Difference Calculations
+* Multi-table Joins
+* Cumulative Revenue Calculations
 
-A structured relational schema was created with the following tables:
+This project demonstrates analytical SQL capabilities beyond basic aggregation and reporting.
 
-customers
+---
 
-orders
+# Power BI Dashboard
 
-products
+The final Power BI solution includes **7 interactive dashboard pages**:
 
-transactions
+1. Summary Dashboard
+2. City & Delivery Performance
+3. Customer & Product Insights
+4. City Details (Drill-through)
+5. Customer Details (Drill-through)
+6. Product Details (Drill-through)
+7. Payment Analytics
 
-order_status_logs
+## Dashboard Features
 
-date_dim
+* Interactive slicers
+* KPI cards
+* Drill-through navigation
+* Trend analysis
+* Conditional formatting
+* Cross-page filtering
+* Interactive visual storytelling
 
-Analytical Views Created
+---
 
-vw_order_fact
+# Key Business Insights
 
-vw_order_lifecycle
+* Revenue distribution follows a Pareto pattern, where top-performing products contribute a significant portion of total sales.
+* Repeat customers play a major role in revenue stability.
+* Certain cities show consistently higher SLA breach percentages.
+* Payment failures demonstrate rolling volatility trends over time.
+* Perishable products contribute a measurable share of overall platform revenue.
+* Customer Lifetime Value analysis indicates revenue concentration among high-value customer segments.
 
-vw_payments_fact
+---
 
-Indexes were created to optimize queries involving:
+# Future Enhancements
 
-Order timestamps
+* Churn Prediction Modeling
+* Predictive ETA Systems
+* Real-Time Data Pipeline Integration
+* RFM Segmentation
+* Customer Clustering
+* Time-Series Forecasting
 
-Customer joins
+---
 
-Product joins
+# Repository Structure
 
-Payment joins
+```bash
+├── data/
+├── python/
+├── sql/
+├── images/
+├── presentation/
+└── README.md
+```
 
-This replicates industry-grade database design practices.
+---
 
-Advanced SQL Analytics
+# Project Highlights
 
-The project implements more than 25 KPIs across revenue, customer, operational, product, and payment domains.
+* 900,000+ transactional records
+* 25+ business KPIs
+* 7-page interactive dashboard
+* Advanced SQL analytics implementation
+* Structured relational database modeling
+* End-to-end analytics pipeline
 
-Revenue Metrics
+---
 
-Total Revenue
+# Conclusion
 
-Revenue Month-over-Month percentage
+This project demonstrates the complete lifecycle of a modern analytics solution — from raw data generation to executive-level business reporting.
 
-Revenue per Customer
+It highlights:
 
-Revenue Share percentage for Top Products
+* Advanced SQL proficiency
+* Relational database modeling
+* Business KPI design
+* Analytical problem-solving
+* Dashboard storytelling
+* End-to-end data analytics workflow
 
-Pareto 80/20 Product Analysis
-
-Customer Metrics
-
-Total Customers
-
-Repeat Customer percentage
-
-Orders per Customer
-
-Customer Lifetime Value
-
-Cohort Retention Analysis
-
-Delivery Metrics
-
-On-Time Delivery percentage
-
-Delayed Orders percentage
-
-SLA Breach percentage
-
-Average Delivery Time
-
-90th Percentile Delivery Time
-
-Product Metrics
-
-Top 10 Products by Revenue
-
-Perishable Revenue percentage
-
-Top Products Per City using Window Ranking
-
-Payment Metrics
-
-Total Transactions
-
-Payment Success Rate percentage
-
-Failed Payment percentage
-
-Rolling 7-Day Payment Failure percentage
-
-Payment Mode Distribution
-
-Advanced SQL Techniques Used
-
-Common Table Expressions (CTEs)
-
-Window Functions including RANK, ROW_NUMBER, SUM OVER, and LAG
-
-Rolling Averages
-
-Conditional Aggregation
-
-Cohort Analysis Logic
-
-Timestamp difference calculations
-
-Multi-table joins
-
-Cumulative revenue calculations
-
-This demonstrates analytical SQL depth beyond basic aggregation.
-
-Power BI Dashboard
-
-The final dashboard includes seven interlinked pages:
-
-Summary Dashboard
-
-City and Delivery Performance
-
-Customer and Product Insights
-
-City Details (Drill-through)
-
-Customer Details (Drill-through)
-
-Product Details (Drill-through)
-
-Payment Details
-
-Features include:
-
-Date slicers
-
-Drill-through navigation
-
-KPI cards
-
-Trend analysis
-
-Conditional formatting
-
-Interactive filtering
-
-Cross-page navigation
-
-Dashboard Preview
-
-Summary Page
-(Insert image link)
-
-City and Delivery Performance
-(Insert image link)
-
-Customer and Product Insights
-(Insert image link)
-
-Payment Analytics
-(Insert image link)
-
-Presentation Deliverables
-
-The presentation includes:
-
-Problem statement
-
-Data pipeline explanation
-
-SQL query screenshots
-
-Dashboard visuals
-
-Business interpretation
-
-Key insights
-
-Strategic recommendations
-
-Future roadmap
-
-The presentation file is available in the presentation folder.
-
-Key Business Insights
-
-Revenue is concentrated among top-performing products, indicating a Pareto distribution.
-
-Repeat customer rate significantly contributes to overall revenue stability.
-
-Certain cities demonstrate higher SLA breach patterns.
-
-Payment failures show rolling volatility patterns over time.
-
-Perishable category contributes a measurable share of total revenue.
-
-Customer lifetime value distribution indicates revenue concentration among high-value customers.
-
-Future Improvements
-
-Churn prediction modeling
-
-Real-time data pipeline integration
-
-Predictive ETA modeling
-
-RFM segmentation
-
-Customer clustering
-
-Time-series forecasting
-
-Tools Used
-
-Python (Pandas, NumPy)
-
-Excel
-
-MySQL
-
-Power BI Desktop
-
-Git and Git LFS
-
-Repository Structure
-
-data/
-python/
-sql/
-images/
-presentation/
-
-Project Highlights
-
-900,000+ transactional records
-
-20+ business KPIs
-
-7-page interactive dashboard
-
-Advanced SQL analytics implementation
-
-Structured relational modeling
-
-End-to-end analytics pipeline
-
-Conclusion
-
-This project demonstrates the complete lifecycle of a data analytics solution, from raw data generation to executive-level reporting.
-
-It reflects strong SQL capabilities, structured database modeling, analytical thinking, business KPI design, and dashboard storytelling.
+The project closely mirrors how organizations transform raw operational data into strategic business insights for decision-making.
